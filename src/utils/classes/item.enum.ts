@@ -5,4 +5,6 @@ export const ItemEnum = {
     DEFAULT_SELL_IN_MODIFIER: 1,
 } as const;
 
-export type ItemEnum = keyof typeof ItemEnum;
+export const LegendaryItemEnum = {
+    QUALITY_CONSTANT: 80,
+} as const;
