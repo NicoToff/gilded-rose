@@ -63,23 +63,23 @@ export abstract class AbstractItem {
         sellInModifierOverride,
         skipExtraExpiredQualityDegrade,
     }: AgeOneDayLogicArgs = {}): void {
+        this._sellIn -= sellInModifierOverride ?? this._DEFAULT_SELL_IN_MODIFIER;
+
         this._quality -= qualityModifierOverride ?? this._DEFAULT_DEGRADE_MODIFIER;
 
         if (!skipExtraExpiredQualityDegrade && this.isExpired()) {
             this._quality -= this._DEFAULT_DEGRADE_MODIFIER;
         }
-
-        this._sellIn -= sellInModifierOverride ?? this._DEFAULT_SELL_IN_MODIFIER;
     }
 
     public readonly ageOneDay = ({
         qualityModifierOverride,
         sellInModifierOverride,
-        skipQualityBoundariesEnforcement: skipEnforcement,
+        skipQualityBoundariesEnforcement,
     }: AgeOneDayArgs = {}): this => {
         this.ageOneDayLogic({ qualityModifierOverride, sellInModifierOverride });
 
-        if (!skipEnforcement) {
+        if (!skipQualityBoundariesEnforcement) {
             this.enforceQualityBoundaries();
         }
 
