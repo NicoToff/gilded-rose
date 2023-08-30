@@ -24,6 +24,23 @@ describe("ConcertTicketItem", () => {
         expect(true).toBe(true);
     });
 
+    it("should have a quality of 0 once it is expired", () => {
+        while (!concertTicketItem.isExpired()) {
+            concertTicketItem.ageOneDay();
+        }
+        expect(concertTicketItem.getQuality()).toBe(0);
+    });
+
+    it("should have a quality of 0 once it is expired, and it should stay at 0", () => {
+        while (!concertTicketItem.isExpired()) {
+            concertTicketItem.ageOneDay();
+        }
+        for (let i = 0; i < 20; i++) {
+            concertTicketItem.ageOneDay();
+            expect(concertTicketItem.getQuality()).toBe(0);
+        }
+    });
+
     /* The following tests assume that the THRESHOLDS array is:
             THRESHOLDS: [
                 { value: 5, qualityModifier: 3 },

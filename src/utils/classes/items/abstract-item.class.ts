@@ -58,30 +58,38 @@ export abstract class AbstractItem {
         }
     }
 
-    protected sellInLogic(sellInModifierOverride?: number): void {
-        this._sellIn -= sellInModifierOverride ?? this._SELL_IN_MODIFIER;
+    protected sellInLogic(): void {
+        this._sellIn -= this._SELL_IN_MODIFIER;
     }
 
-    protected modifyQualityLogic(qualityModifierOverride?: number): void {
-        this._quality -= qualityModifierOverride ?? this._DEGRADE_MODIFIER;
+    protected modifyQualityLogic(): void {
+        this._quality -= this._DEGRADE_MODIFIER;
     }
 
-    protected expiredExtraLogic(skipLogic?: boolean): void {
-        if (!skipLogic) this.modifyQualityLogic();
+    protected expiredExtraLogic(): void {
+        this.modifyQualityLogic();
     }
 
     public readonly ageOneDay = ({
-        qualityModifierOverride,
         sellInModifierOverride,
+        qualityModifierOverride,
         skipExtraExpiredQualityDegrade,
         skipQualityBoundariesEnforcement,
     }: AgeOneDayArgs = {}): this => {
-        this.sellInLogic(sellInModifierOverride);
+        if (!sellInModifierOverride) {
+            this.sellInLogic();
+        } else {
+            this._sellIn -= sellInModifierOverride;
+        }
 
-        this.modifyQualityLogic(qualityModifierOverride);
+        if (!qualityModifierOverride) {
+            this.modifyQualityLogic();
+        } else {
+            this._quality -= qualityModifierOverride;
+        }
 
-        if (this.isExpired()) {
-            this.expiredExtraLogic(skipExtraExpiredQualityDegrade);
+        if (this.isExpired() && !skipExtraExpiredQualityDegrade) {
+            this.expiredExtraLogic();
         }
 
         if (!skipQualityBoundariesEnforcement) {
@@ -92,9 +100,9 @@ export abstract class AbstractItem {
     };
 }
 
-type AgeOneDayArgs = {
-    qualityModifierOverride?: number;
+export type AgeOneDayArgs = {
     sellInModifierOverride?: number;
+    qualityModifierOverride?: number;
     skipExtraExpiredQualityDegrade?: boolean;
     skipQualityBoundariesEnforcement?: boolean;
 };
