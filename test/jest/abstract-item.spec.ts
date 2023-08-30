@@ -4,7 +4,7 @@ import { ItemEnum } from "../../src/utils/classes/item.enum";
 describe("AbstractItem", () => {
     const originalName = "foo";
     const originalSellIn = 10;
-    const originalQuality = 10;
+    const originalQuality = 20;
 
     class BasicItem extends AbstractItem {}
     let basicItem: BasicItem;
@@ -49,13 +49,45 @@ describe("AbstractItem", () => {
         expect(basicItem.getQuality()).toBe(ItemEnum.DEFAULT_MIN_QUALITY);
     });
 
-    it("should be considered expired when sellIn is 0 or less", () => {
-        const numberOfDays = originalSellIn;
+    it("should be considered expired when sellIn is less than 0", () => {
+        const numberOfDays = originalSellIn + 1;
 
         for (let i = 0; i < numberOfDays; i++) {
             basicItem.ageOneDay();
         }
 
         expect(basicItem.isExpired()).toBe(true);
+    });
+
+    it("should degrade twice as fast when expired", () => {
+        const numberOfDays = originalSellIn;
+        const qualityWhenSellInIsReached =
+            originalQuality - originalSellIn * ItemEnum.DEFAULT_DEGRADE_MODIFIER;
+
+        for (let i = 0; i < numberOfDays; i++) {
+            basicItem.ageOneDay();
+        }
+
+        expect(basicItem.getQuality()).toBe(qualityWhenSellInIsReached);
+
+        basicItem.ageOneDay();
+
+        expect(basicItem.getQuality()).toBe(
+            qualityWhenSellInIsReached - 2 * ItemEnum.DEFAULT_DEGRADE_MODIFIER,
+        );
+    });
+
+    it("should be possible to override the qualityModifier", () => {
+        const qualityModifierOverride = 2;
+        basicItem.ageOneDay({ qualityModifierOverride });
+
+        expect(basicItem.getQuality()).toBe(originalQuality - qualityModifierOverride);
+    });
+
+    it("should be possible to override the sellInModifier", () => {
+        const sellInModifierOverride = -2;
+        basicItem.ageOneDay({ sellInModifierOverride });
+
+        expect(basicItem.getSellIn()).toBe(originalSellIn - sellInModifierOverride);
     });
 });
