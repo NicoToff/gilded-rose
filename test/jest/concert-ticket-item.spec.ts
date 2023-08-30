@@ -33,10 +33,10 @@ describe("ConcertTicketItem", () => {
         DO NOT use the THRESHOLDS array directly, as it would defeat the purpose of these tests.
     */
     it("should have a working computeQualityModifier method", () => {
-        expect(concertTicketItem.computeQualityModifier(17)).toBe(1);
-        expect(concertTicketItem.computeQualityModifier(10)).toBe(2);
-        expect(concertTicketItem.computeQualityModifier(9)).toBe(2);
-        expect(concertTicketItem.computeQualityModifier(5)).toBe(3);
-        expect(concertTicketItem.computeQualityModifier(4)).toBe(3);
+        expect(ConcertTicketItem.computeQualityModifier(17)).toBe(1);
+        expect(ConcertTicketItem.computeQualityModifier(10)).toBe(2);
+        expect(ConcertTicketItem.computeQualityModifier(9)).toBe(2);
+        expect(ConcertTicketItem.computeQualityModifier(5)).toBe(3);
+        expect(ConcertTicketItem.computeQualityModifier(4)).toBe(3);
     });
 });

@@ -1,22 +1,20 @@
-import { AbstractItem, type AgeOneDayLogicArgs } from "./abstract-item.class";
+import { AbstractItem } from "./abstract-item.class";
 import { ConcertTicketItemEnum, ItemEnum } from "./item.enum";
 
 export class ConcertTicketItem extends AbstractItem {
-    protected override ageOneDayLogic({
-        qualityModifierOverride,
-        sellInModifierOverride,
-        skipExtraExpiredQualityDegrade,
-    }: AgeOneDayLogicArgs = {}) {
-        this._sellIn -= sellInModifierOverride ?? this._SELL_IN_MODIFIER;
+    protected override modifyQuality(qualityModifierOverride?: number | undefined): void {
+        const qualityModifier =
+            qualityModifierOverride ?? ConcertTicketItem.computeQualityModifier(this.getSellIn());
+        this._quality += qualityModifier;
+    }
 
-        if (!skipExtraExpiredQualityDegrade && this.isExpired()) {
+    protected override expiredExtraLogic(skipLogic?: boolean | undefined): void {
+        if (!skipLogic) {
             this._quality = 0;
-        } else {
-            this._quality += qualityModifierOverride ?? this.computeQualityModifier();
         }
     }
 
-    computeQualityModifier(currentSellIn = this.getSellIn()): number {
+    public static computeQualityModifier(currentSellIn: number): number {
         for (const { value, qualityModifier } of ConcertTicketItemEnum.SELL_IN_THRESHOLDS) {
             if (currentSellIn <= value) {
                 return qualityModifier;
