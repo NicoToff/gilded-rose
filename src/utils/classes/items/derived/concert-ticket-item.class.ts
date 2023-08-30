@@ -13,7 +13,8 @@ export class ConcertTicketItem extends AbstractItem {
 
     public static computeQualityModifier(currentSellIn: number): number {
         for (const { value, qualityModifier } of ConcertTicketItemEnum.SELL_IN_THRESHOLDS) {
-            if (currentSellIn <= value) {
+            const thresholdIsReached = currentSellIn <= value;
+            if (thresholdIsReached) {
                 return qualityModifier;
             }
         }
