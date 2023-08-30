@@ -1,14 +1,36 @@
 import { GildedRose } from "../utils/classes/gilded-rose";
+import { originalItems, newItems } from "../data/items";
+import { itemLogger, type ItemLoggerPadding } from "../utils/helpers/logger";
+import { findLongestItemName } from "../utils/helpers/find-longest-item-name";
 
-const items = [
-    new Item({ name: "+5 Dexterity Vest", sellIn: 10, quality: 20 }), //
-    new Item({ name: "Aged Brie", sellIn: 2, quality: 0, agesWell: true }), //
-    new Item({ name: "Elixir of the Mongoose", sellIn: 5, quality: 7 }), //
-    new Item({ name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80, isLegendary: true }), //
-    new Item({ name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80, isLegendary: true }),
-    new Item({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 15, quality: 20, agesWell: true }),
-    new Item({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49, agesWell: true }),
-    new Item({ name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 5, quality: 49, agesWell: true }),
-    // this conjured item does not work properly yet
-    new Item({ name: "Conjured Mana Cake", sellIn: 3, quality: 6, isConjured: true }),
-];
+const daysArgument = Number(process.argv.at(2));
+
+if (daysArgument) {
+    if (isNaN(daysArgument)) {
+        console.log(`Invalid argument ${daysArgument}: days must be a number`);
+        process.exit(1);
+    }
+    if (daysArgument < 0) {
+        console.log(`Invalid argument ${daysArgument}: days must be a positive number`);
+        process.exit(1);
+    }
+    if (daysArgument > 365) {
+        console.log(`Invalid argument ${daysArgument}: days must be less or equal to 365`);
+        process.exit(1);
+    }
+}
+
+const days = daysArgument || 15;
+
+const allItems = [...originalItems, ...newItems];
+const gildedRoseInn = new GildedRose(allItems);
+
+const loggerPadding: ItemLoggerPadding = { name: findLongestItemName(allItems), sellIn: 6, quality: 4 };
+for (let i = 0; i < days; i++) {
+    console.log(`\n----------------------- day ${i} ------------------------`);
+    itemLogger("name", "sellIn", "qual.", loggerPadding);
+    gildedRoseInn.items.forEach((item) => {
+        itemLogger(item.getName(), item.getSellIn(), item.getQuality(), loggerPadding);
+    });
+    gildedRoseInn.updateItems();
+}
