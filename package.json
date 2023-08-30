@@ -6,7 +6,8 @@
         "compile": "tsc",
         "test": "jest",
         "test:watch": "jest --watchAll",
-        "format": "npx prettier . --write"
+        "format": "npx prettier . --write",
+        "ts-node": "ts-node"
     },
     "license": "MIT",
     "private": true,
