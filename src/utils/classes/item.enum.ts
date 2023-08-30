@@ -12,3 +12,11 @@ export const LegendaryItemEnum = {
 export const ConjuredItemEnum = {
     DEGRADE_MODIFIER: 2,
 } as const;
+
+export const ConcertTicketItemEnum = {
+    // WARNING: This array must be sorted by value in ascending order
+    SELL_IN_THRESHOLDS: [
+        { value: 5, qualityModifier: 3 },
+        { value: 10, qualityModifier: 2 },
+    ],
+} as const;
