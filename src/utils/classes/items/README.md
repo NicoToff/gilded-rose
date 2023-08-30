@@ -160,4 +160,12 @@ type AgeOneDayArgs = {
     skipQualityBoundariesEnforcement?: boolean;
 };
 ```
+### Full explanation of the arguments
 
+When `qualityModifierOverride` is passed, the `modifyQualityLogic()` is entirely ignored and the value passed is used instead. 
+
+When `sellInModifierOverride` is passed, the `sellInLogic()` is entirely ignored and the value passed is used instead. 
+
+When `skipExtraExpiredQualityDegrade` is passed, the `expiredExtraLogic()` is ignored.
+
+Finally, when `skipQualityBoundariesEnforcement` is passed, the `enforceQualityBoundaries()` is ignored (this private method normally ensures the `_quality` remains within the predefined bounds).

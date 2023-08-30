@@ -58,3 +58,9 @@ Feel free to edit the files in this repository. When developping, use this scrip
 ```sh
 npm run dev
 ```
+
+## Want to know more?
+
+Browse the code, and check out the README about the `AbstractItem` class in [src/utils/classes/items/](https://github.com/NicoToff/gilded-rose/tree/main/src/utils/classes/items).
+
+Also feel free to get in touch with me if you have any questions or suggestions!
