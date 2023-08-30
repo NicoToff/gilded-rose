@@ -1,4 +1,5 @@
 import { AbstractItem } from "../../src/utils/classes/abstract-item.class";
+import { ItemEnum } from "../../src/utils/classes/item.enum";
 
 describe("AbstractItem", () => {
     const originalName = "foo";
@@ -21,8 +22,8 @@ describe("AbstractItem", () => {
     it("should be able to age one day", () => {
         basicItem.ageOneDay();
 
-        expect(basicItem.getSellIn()).toBe(originalSellIn - 1);
-        expect(basicItem.getQuality()).toBe(originalQuality - 1);
+        expect(basicItem.getSellIn()).toBe(originalSellIn - ItemEnum.DEFAULT_SELL_IN_MODIFIER);
+        expect(basicItem.getQuality()).toBe(originalQuality - ItemEnum.DEFAULT_DEGRADE_MODIFIER);
     });
 
     it("should be able to age multiple days", () => {
@@ -32,7 +33,29 @@ describe("AbstractItem", () => {
             basicItem.ageOneDay();
         }
 
-        expect(basicItem.getSellIn()).toBe(originalSellIn - numberOfDays);
-        expect(basicItem.getQuality()).toBe(originalQuality - numberOfDays);
+        expect(basicItem.getSellIn()).toBe(originalSellIn - numberOfDays * ItemEnum.DEFAULT_SELL_IN_MODIFIER);
+        expect(basicItem.getQuality()).toBe(
+            originalQuality - numberOfDays * ItemEnum.DEFAULT_DEGRADE_MODIFIER,
+        );
+    });
+
+    it("should should have a quality lower than intended DEFAULT_MIN_QUALITY", () => {
+        const numberOfDays = 100;
+
+        for (let i = 0; i < numberOfDays; i++) {
+            basicItem.ageOneDay();
+        }
+
+        expect(basicItem.getQuality()).toBe(ItemEnum.DEFAULT_MIN_QUALITY);
+    });
+
+    it("should be considered expired when sellIn is 0 or less", () => {
+        const numberOfDays = originalSellIn;
+
+        for (let i = 0; i < numberOfDays; i++) {
+            basicItem.ageOneDay();
+        }
+
+        expect(basicItem.isExpired()).toBe(true);
     });
 });
