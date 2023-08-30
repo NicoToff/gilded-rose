@@ -29,7 +29,7 @@ export abstract class AbstractItem {
         this._sellIn = args.sellIn;
         this._quality = args.quality;
         this._DEFAULT_DEGRADE_MODIFIER = args.DEFAULT_DEGRADE_MODIFIER ?? ItemEnum.DEFAULT_DEGRADE_MODIFIER;
-        this._DEFAULT_SELL_IN_MODIFIER = args.DEFAULT_DEGRADE_MODIFIER ?? ItemEnum.DEFAULT_SELL_IN_MODIFIER;
+        this._DEFAULT_SELL_IN_MODIFIER = args.DEFAULT_SELL_IN_MODIFIER ?? ItemEnum.DEFAULT_SELL_IN_MODIFIER;
         this._MIN_QUALITY = args.MIN_QUALITY ?? ItemEnum.DEFAULT_MIN_QUALITY;
         this._MAX_QUALITY = args.MAX_QUALITY ?? ItemEnum.DEFAULT_MAX_QUALITY;
     }
