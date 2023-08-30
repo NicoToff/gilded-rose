@@ -1,5 +1,5 @@
-import { ConcertTicketItemEnum, ItemEnum } from "../../src/utils/classes/item.enum";
-import { ConcertTicketItem } from "../../src/utils/classes/concert-ticket-item.class";
+import { ConcertTicketItemEnum, ItemEnum } from "../../src/utils/classes/items/enums/item.enum";
+import { ConcertTicketItem } from "../../src/utils/classes/items/derived/concert-ticket-item.class";
 
 describe("ConcertTicketItem", () => {
     const originalSellIn = 20;

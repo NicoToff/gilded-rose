@@ -1,5 +1,5 @@
-import { AbstractItem, type ItemConstructorArgs } from "./abstract-item.class";
-import { LegendaryItemEnum } from "./item.enum";
+import { AbstractItem, type ItemConstructorArgs } from "../abstract-item.class";
+import { LegendaryItemEnum } from "../enums/item.enum";
 
 export class LegendaryItem extends AbstractItem {
     constructor(args: Omit<ItemConstructorArgs, "quality">) {

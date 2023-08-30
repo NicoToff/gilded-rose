@@ -1,4 +1,4 @@
-import { ItemEnum } from "./item.enum";
+import { ItemEnum } from "./enums/item.enum";
 
 type AbstractItemConstructorArgs = {
     name: string;

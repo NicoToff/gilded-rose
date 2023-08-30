@@ -1,5 +1,5 @@
-import { Item } from "../../src/utils/classes/item.class";
-import { ItemEnum } from "../../src/utils/classes/item.enum";
+import { Item } from "../../src/utils/classes/items/derived/item.class";
+import { ItemEnum } from "../../src/utils/classes/items/enums/item.enum";
 
 describe("AbstractItem", () => {
     const originalName = "foo";
