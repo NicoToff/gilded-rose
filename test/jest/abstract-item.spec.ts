@@ -1,4 +1,4 @@
-import { AbstractItem } from "../../src/utils/classes/abstract-item.class";
+import { Item } from "../../src/utils/classes/item.class";
 import { ItemEnum } from "../../src/utils/classes/item.enum";
 
 describe("AbstractItem", () => {
@@ -6,10 +6,9 @@ describe("AbstractItem", () => {
     const originalSellIn = 10;
     const originalQuality = 20;
 
-    class BasicItem extends AbstractItem {}
-    let basicItem: BasicItem;
+    let basicItem: Item;
     beforeEach(() => {
-        basicItem = new BasicItem({ name: originalName, sellIn: originalSellIn, quality: originalQuality });
+        basicItem = new Item({ name: originalName, sellIn: originalSellIn, quality: originalQuality });
     });
 
     it("should exist, have a name, sellIn, and quality", () => {
