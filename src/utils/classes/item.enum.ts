@@ -8,3 +8,7 @@ export const ItemEnum = {
 export const LegendaryItemEnum = {
     QUALITY_CONSTANT: 80,
 } as const;
+
+export const ConjuredItemEnum = {
+    DEGRADE_MODIFIER: 2,
+} as const;
