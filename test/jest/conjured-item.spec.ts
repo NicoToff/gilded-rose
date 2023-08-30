@@ -1,5 +1,5 @@
-import { ConjuredItem } from "../../src/utils/classes/conjured-item.class";
-import { ConjuredItemEnum } from "../../src/utils/classes/item.enum";
+import { ConjuredItem } from "../../src/utils/classes/items/derived/conjured-item.class";
+import { ConjuredItemEnum } from "../../src/utils/classes/items/enums/item.enum";
 
 describe("ConjuredItem", () => {
     const originalSellIn = 10;

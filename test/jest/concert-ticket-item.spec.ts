@@ -1,5 +1,5 @@
-import { ConcertTicketItemEnum, ItemEnum } from "../../src/utils/classes/item.enum";
-import { ConcertTicketItem } from "../../src/utils/classes/concert-ticket-item.class";
+import { ConcertTicketItemEnum, ItemEnum } from "../../src/utils/classes/items/enums/item.enum";
+import { ConcertTicketItem } from "../../src/utils/classes/items/derived/concert-ticket-item.class";
 
 describe("ConcertTicketItem", () => {
     const originalSellIn = 20;
@@ -22,6 +22,23 @@ describe("ConcertTicketItem", () => {
             expect(concertTicketItem.getQuality()).toBe(previousQuality + ItemEnum.DEFAULT_DEGRADE_MODIFIER);
         }
         expect(true).toBe(true);
+    });
+
+    it("should have a quality of 0 once it is expired", () => {
+        while (!concertTicketItem.isExpired()) {
+            concertTicketItem.ageOneDay();
+        }
+        expect(concertTicketItem.getQuality()).toBe(0);
+    });
+
+    it("should have a quality of 0 once it is expired, and it should stay at 0", () => {
+        while (!concertTicketItem.isExpired()) {
+            concertTicketItem.ageOneDay();
+        }
+        for (let i = 0; i < 20; i++) {
+            concertTicketItem.ageOneDay();
+            expect(concertTicketItem.getQuality()).toBe(0);
+        }
     });
 
     /* The following tests assume that the THRESHOLDS array is:

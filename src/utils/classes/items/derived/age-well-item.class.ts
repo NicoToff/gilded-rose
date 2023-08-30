@@ -1,4 +1,4 @@
-import { AbstractItem, type ItemConstructorArgs } from "./abstract-item.class";
+import { AbstractItem, type ItemConstructorArgs } from "../abstract-item.class";
 
 export class AgeWellItem extends AbstractItem {
     constructor(args: ItemConstructorArgs) {

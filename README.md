@@ -1,8 +1,19 @@
 # Gilded Rose
 
-This is the Gilded Rose kata in TypeScript.
+This is my take on the Gilded Rose kata in TypeScript.
+
+## Prerequisites
+
+You'll need a recent version of [Node.js](https://nodejs.org/en/) installed.
 
 ## Getting started
+
+Clone this repo and cd into it
+
+```sh
+git clone https://github.com/NicoToff/gilded-rose.git
+cd gilded-rose
+```
 
 Install dependencies
 
@@ -12,36 +23,38 @@ npm install
 
 ## Running app
 
-_You may need to install `ts-node`_
+To compile and run the app
 
 ```sh
-npx ts-node test/golden-master-text-test.ts
+npm run start:prod
 ```
 
 Or with number of days as args:
 
 ```sh
-npx ts-node test/golden-master-text-test.ts 10
+npm run start:prod
 ```
+
+<details>
+
+<summary>Output folder</summary>
+
+The compiled JS files will be in the `dist` folder.
+
+</details>
 
 ## Running tests
 
-To run all tests
-
-### Jest way
+All tests are written with Jest. To run then, simply run:
 
 ```sh
-npm run test:jest
+npm run test
 ```
 
-To run all tests in watch mode
+## Development
+
+Feel free to edit the files in this repository. When developping, use this script to run the app instead of `start:prod`:
 
 ```sh
-npm run test:jest:watch
-```
-
-### Mocha way
-
-```sh
-npm run test:mocha
+npm run dev
 ```

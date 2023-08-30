@@ -1,5 +1,5 @@
-import { AbstractItem, type ItemConstructorArgs } from "./abstract-item.class";
-import { ConjuredItemEnum } from "./item.enum";
+import { AbstractItem, type ItemConstructorArgs } from "../abstract-item.class";
+import { ConjuredItemEnum } from "../enums/item.enum";
 
 export class ConjuredItem extends AbstractItem {
     constructor(args: ItemConstructorArgs) {

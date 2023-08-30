@@ -1,4 +1,4 @@
-import { AbstractItem } from "./abstract-item.class";
+import { AbstractItem } from "./items/abstract-item.class";
 
 export class GildedRose {
     items: Array<AbstractItem>;

@@ -1,5 +1,5 @@
-import { AgeWellItem } from "../../src/utils/classes/age-well-item.class";
-import { ItemEnum } from "../../src/utils/classes/item.enum";
+import { AgeWellItem } from "../../src/utils/classes/items/derived/age-well-item.class";
+import { ItemEnum } from "../../src/utils/classes/items/enums/item.enum";
 
 describe("AgeWellItem", () => {
     const originalSellIn = 10;
