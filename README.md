@@ -1,6 +1,6 @@
 # Gilded Rose
 
-This is my take on the Gilded Rose kata in TypeScript.
+This is my take on the [Gilded Rose kata](https://github.com/emilybache/GildedRose-Refactoring-Kata) in TypeScript.
 
 ## Prerequisites
 
