@@ -1,17 +1,16 @@
-// import { Item } from "./legendary-item.entity";
+import { AbstractItem } from "./abstract-item.class";
 
-// export class GildedRose {
-//     items: Array<Item>;
+export class GildedRose {
+    items: Array<AbstractItem>;
 
-//     constructor(items = [] as Array<Item>) {
-//         this.items = items;
-//     }
+    constructor(items: Array<AbstractItem> = []) {
+        this.items = items;
+    }
 
-//     updateQuality() {
-//         this.items.forEach((item) => {
-//             item.ageOneDay();
-//         });
-
-//         return this.items;
-//     }
-// }
+    public readonly updateItems = () => {
+        this.items.forEach((item) => {
+            item.ageOneDay();
+        });
+        return this.items;
+    };
+}
