@@ -3,7 +3,9 @@
     "version": "1.0.0",
     "description": "Gilded Rose kata in TypeScript",
     "scripts": {
+        "dev": "ts-node src/app/main.ts",
         "compile": "tsc",
+        "start:prod": "tsc && node dist/app/main.js",
         "test": "jest",
         "test:watch": "jest --watchAll",
         "format": "npx prettier . --write",
