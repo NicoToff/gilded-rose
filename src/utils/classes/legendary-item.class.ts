@@ -6,8 +6,8 @@ export class LegendaryItem extends AbstractItem {
         super({
             ...args,
             quality: LegendaryItemEnum.QUALITY_CONSTANT,
-            DEFAULT_DEGRADE_MODIFIER: 0,
-            DEFAULT_SELL_IN_MODIFIER: 0,
+            DEGRADE_MODIFIER: 0,
+            SELL_IN_MODIFIER: 0,
             MIN_QUALITY: LegendaryItemEnum.QUALITY_CONSTANT,
             MAX_QUALITY: LegendaryItemEnum.QUALITY_CONSTANT,
         });

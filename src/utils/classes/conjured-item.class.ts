@@ -5,7 +5,7 @@ export class ConjuredItem extends AbstractItem {
     constructor(args: ItemConstructorArgs) {
         super({
             ...args,
-            DEFAULT_DEGRADE_MODIFIER: ConjuredItemEnum.DEGRADE_MODIFIER,
+            DEGRADE_MODIFIER: ConjuredItemEnum.DEGRADE_MODIFIER,
         });
     }
 }

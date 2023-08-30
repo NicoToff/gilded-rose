@@ -4,7 +4,7 @@ export class AgeWellItem extends AbstractItem {
     constructor(args: ItemConstructorArgs) {
         super({
             ...args,
-            DEFAULT_DEGRADE_MODIFIER: -1,
+            DEGRADE_MODIFIER: -1,
         });
     }
 }
