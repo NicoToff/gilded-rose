@@ -1,5 +1,5 @@
 import { LegendaryItemEnum } from "../../src/utils/classes/item.enum";
-import { LegendaryItem } from "../../src/utils/classes/legendary-item.entity";
+import { LegendaryItem } from "../../src/utils/classes/legendary-item.class";
 
 describe("LegendaryItem", () => {
     const originalSellIn = 10;
