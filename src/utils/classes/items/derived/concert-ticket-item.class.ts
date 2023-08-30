@@ -2,7 +2,7 @@ import { AbstractItem } from "../abstract-item.class";
 import { ConcertTicketItemEnum, ItemEnum } from "../enums/item.enum";
 
 export class ConcertTicketItem extends AbstractItem {
-    protected override modifyQuality(qualityModifierOverride?: number | undefined): void {
+    protected override modifyQualityLogic(qualityModifierOverride?: number | undefined): void {
         const qualityModifier =
             qualityModifierOverride ?? ConcertTicketItem.computeQualityModifier(this.getSellIn());
         this._quality += qualityModifier;
