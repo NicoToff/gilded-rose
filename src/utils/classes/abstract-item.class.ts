@@ -75,9 +75,14 @@ export abstract class AbstractItem {
     public readonly ageOneDay = ({
         qualityModifierOverride,
         sellInModifierOverride,
+        skipExtraExpiredQualityDegrade,
         skipQualityBoundariesEnforcement,
     }: AgeOneDayArgs = {}): this => {
-        this.ageOneDayLogic({ qualityModifierOverride, sellInModifierOverride });
+        this.ageOneDayLogic({
+            qualityModifierOverride,
+            sellInModifierOverride,
+            skipExtraExpiredQualityDegrade,
+        });
 
         if (!skipQualityBoundariesEnforcement) {
             this.enforceQualityBoundaries();
@@ -91,6 +96,6 @@ export type AgeOneDayLogicArgs = {
     sellInModifierOverride?: number;
     skipExtraExpiredQualityDegrade?: boolean;
 };
-export type AgeOneDayArgs = {
+type AgeOneDayArgs = {
     skipQualityBoundariesEnforcement?: boolean;
 } & AgeOneDayLogicArgs;
