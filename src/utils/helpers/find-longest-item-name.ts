@@ -1,4 +1,4 @@
-import { AbstractItem } from "../classes/abstract-item.class";
+import { AbstractItem } from "../classes/items/abstract-item.class";
 
 export function findLongestItemName(items: AbstractItem[]) {
     return items.reduce((longest, currentItem) => {
