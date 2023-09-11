@@ -1,8 +1,8 @@
-import { Item } from "../utils/classes/item.class";
-import { LegendaryItem } from "../utils/classes/legendary-item.class";
-import { AgeWellItem } from "../utils/classes/age-well-item.class";
-import { ConjuredItem } from "../utils/classes/conjured-item.class";
-import { ConcertTicketItem } from "../utils/classes/concert-ticket-item.class";
+import { Item } from "../utils/classes/items/derived/item.class";
+import { LegendaryItem } from "../utils/classes/items/derived/legendary-item.class";
+import { AgeWellItem } from "../utils/classes/items/derived/age-well-item.class";
+import { ConjuredItem } from "../utils/classes/items/derived/conjured-item.class";
+import { ConcertTicketItem } from "../utils/classes/items/derived/concert-ticket-item.class";
 
 export const originalItems = [
     new Item({ name: "+5 Dexterity Vest", sellIn: 10, quality: 20 }),
